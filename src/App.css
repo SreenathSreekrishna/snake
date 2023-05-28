@@ -1,38 +1,189 @@
-.App {
-  text-align: center;
+#snake {
+  background: #111;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  border: none;
+  outline:none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.start-screen {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  font-family: 'Syn Nova' !important;
+  position: absolute;
+  color: lime;
+  font-size: 300px;
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+  top: 0;
+  left: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.text {
+  z-index: 2;
+  border: 20px solid lime;
+  border-radius: 50px;
+  margin: 75px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.btn {
+  z-index: 2;
+  font-family: 'Syn Nova' !important;
+  color: lime;
+  font-size: 80px;
+  width: 400px;
+  height: 100px;
+  outline: none;
+  background: #222;
+  border:none;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn-underlay {
+  margin-top: 550px;
+  margin-left: calc(50% - 200px);
+  z-index: 1;
+  position: absolute;
+  width: 5px;
+  height: 110px;
+  background-color: lime;
+  top: -5px;
+  left: -5px;
+  animation: snake 3s linear infinite;
+}
+
+.btn-fruit {
+  margin-top: 545px;
+  margin-left: calc(50% - 205px);
+  z-index: 3;
+  position: absolute;
+  height:5px;
+  width: 5px;
+  background: red;
+  top: 0;
+  left: 0;
+  animation: fruit-animation 3s linear infinite;
+}
+
+@keyframes snake {
+  0% {
+    top: -5px;
+    left: -5px;
+    width: 5px;
+    height: 110px;
   }
-  to {
-    transform: rotate(360deg);
+  8% {
+    top: -5px;
+    left: -5px;
+    width: 110px;
+    height:5px;
   }
+  33% {
+    top: -5px;
+    left: 295px;
+    width: 110px;
+    height:5px;
+  }
+  41% {
+    top: -5px;
+    left: 400px;
+    width: 5px;
+    height:110px;
+  }
+  55% {
+    top: 100px;
+    left: 295px;
+    width: 110px;
+    height: 5px;
+  }
+  88% {
+    top: 100px;
+    left: -5px;
+    width: 110px;
+    height: 5px;
+  }
+}
+
+@keyframes fruit-animation {
+  0% {
+    top: 0;
+    left: 100px;
+  }
+  30% {
+    top: 0;
+    left: 405px;
+  }
+  40% {
+    top: 105px;
+    left: 405px;
+  }
+  80% {
+    top: 105px;
+    left: 0;
+  }
+  90% {
+    top: 0;
+    left: 0;
+  }
+  100% {
+    top: 0;
+    left: 100px;
+  }
+}
+
+.btn:hover {
+  background: #333;
+  color: limegreen;
+  cursor: pointer;
+}
+
+.death-message {
+  position: absolute;
+  color: red;
+  font-family: 'Syn Nova' !important;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 50px;
+}
+
+input[type="range"] {
+  position: absolute;
+  top: 600px;
+  width: 100px;
+}
+
+#speed {
+  left: calc(50% + 400px);
+  transform: translateX(-50%);
+}
+
+#size {
+  left: calc(50% - 400px);
+  transform: translateX(-50%);
+}
+
+#speed::after {
+  content: 'Speed'
+}
+
+#size::after {
+  content: 'Size';
+}
+
+input[type="range"]::after {
+  color: lime;
+  font-size: 30px;
+  position: absolute;
+  top: 10px;
+  font-family: 'Syn Nova' !important;
 }
